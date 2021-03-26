@@ -88,6 +88,28 @@
           </svg>
         </div>
       </div>
+      <div class="feedbackQuestions">
+        <label for="questions">Do you have any thoughts you'd like to share ?</label>
+        <textarea name="questions"></textarea>
+      </div>
+      <div class="feedbackCheckbox">
+        <p>May we follow you up on your feedback ?</p>
+        <div class="checkbox">
+          <div>
+            <input type="radio" name="choix" value="yes" checked>
+            <label for="Yes">Yes</label>
+          </div>
+
+          <div>
+            <input type="radio" name="choix" value="no">
+            <label for="No">No</label>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button>Send</button>
+        <button>Cancel</button>
+      </div>
     </div>
   </div>
 </template>
@@ -124,16 +146,17 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
 }
-#app, .exit, .feedback__emoji {
+#app, .exit, .feedback__emoji, .checkbox, .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .feedbackCard {
   position: relative;
-  height: 600px;
-  width: 425px;
+  height: 625px;
+  width: 400px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -147,15 +170,15 @@ body {
   background-color: #EBEBF3;
   border-radius: 50%;
   font-weight: 900;
+  cursor: pointer;
 
   img {
     width: 30%;
   }
 }
 .feedback {
-  padding: 100px 70px 80px 70px;
+  padding: 85px 80px 50px 60px;
   text-transform: uppercase;
-  font-size: 13px;
 
     & p:nth-child(2) {
       margin-top: 5px;
@@ -170,10 +193,12 @@ body {
   svg {
     box-sizing: initial;
     width: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: ease 0.5s;
 
     &.selected {
       border: 12px solid #EBEBF3;
-      border-radius: 50%;
 
       circle#Oval {
         fill: #EBB34B;
@@ -181,6 +206,93 @@ body {
       polygon#Path  {
         fill: #EBB34B;
       }
+    }
+  }
+}
+.feedbackQuestions {
+  padding: 0 60px 0 60px;
+  label {
+    font-weight: 500;
+  }
+  textarea { 
+    font-size: 13px;
+    width: 100%;
+    height: 110px;
+    border: 1px solid;
+    border-radius: 5px;
+    outline: none;
+    padding: 10px;
+    margin-top: 8px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    resize: none;
+
+    &:focus {
+      border-color: #015ecc;
+    }
+  }
+}
+.feedbackCheckbox {
+  padding: 30px 60px 0 60px;
+
+  p {
+    font-weight: 500;
+  }
+  .checkbox {
+    width: 120px;
+    margin-top: 20px;
+    justify-content: space-between;
+
+    label {
+      margin-left: 10px;
+    }
+  }
+}
+.buttons {
+  padding: 50px 60px 0 60px;
+  justify-content: space-between;
+
+  button {
+    width: 135px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #a8afbe;
+    border-radius: 5px;
+    color: #a8afbe;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    transition: ease 0.2s;
+
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+  & button:nth-child(1) {
+    background-color: rgb(59, 112, 255);
+    color: #fff;
+    border: none;
+    box-shadow: rgba(59, 112, 255, 0.07) 0px 1px 2px, rgba(59, 112, 255, 0.07) 0px 2px 4px, rgba(59, 112, 255, 0.07) 0px 10px 8px, rgba(59, 112, 255, 0.07) 0px 8px 16px, rgba(59, 112, 255, 0.07) 0px 16px 32px, rgba(59, 112, 255, 0.07) 0px 32px 64px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .feedbackCard {
+    width: 85%;
+  }
+  .feedback {
+    padding: 85px 8% 50px 8%;
+  }
+  .feedbackQuestions {
+    padding: 0 8% 0 8%;
+  }
+  .feedbackCheckbox {
+    padding: 30px 8% 0 8%;
+  }
+  .buttons {
+    padding: 50px 8% 0 8%;
+
+    button {
+      width: 45%;
     }
   }
 }
